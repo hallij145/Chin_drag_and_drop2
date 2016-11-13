@@ -49,7 +49,6 @@
         android:layout_marginTop="@dimen/button_margin"
         android:layout_below="@+id/StartButton"
         android:layout_toRightOf="@+id/StartButton"
-        android:layout_toEndOf="@+id/StartButton"
-        />
+        android:layout_toEndOf="@+id/StartButton"/>
 
 </RelativeLayout>
