@@ -27,28 +27,18 @@
         android:textColor="@color/white"/>
 
     <Button
-        android:id="@+id/StartButton"
+        android:id="@+id/Start"
         android:layout_width="@dimen/button_size"
         android:layout_height="@dimen/button_size"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_margin="@dimen/button_margin"
+        android:layout_centerVertical="true"/>
 
     <Button
         android:id="@+id/Dictionary"
         android:layout_width="@dimen/button_size"
         android:layout_height="@dimen/button_size"
-        android:layout_marginTop="@dimen/button_margin"
-        android:layout_below="@+id/StartButton"
-        android:layout_toLeftOf="@+id/StartButton"
-        android:layout_toStartOf="@+id/StartButton"/>
-
-    <Button
-        android:id="@+id/Settings"
-        android:layout_width="@dimen/button_size"
-        android:layout_height="@dimen/button_size"
-        android:layout_marginTop="@dimen/button_margin"
-        android:layout_below="@+id/StartButton"
-        android:layout_toRightOf="@+id/StartButton"
-        android:layout_toEndOf="@+id/StartButton"/>
+        android:layout_margin="@dimen/button_margin"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"/>
 
 </RelativeLayout>
