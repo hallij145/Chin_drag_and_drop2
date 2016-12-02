@@ -27,14 +27,14 @@
         android:textColor="@color/white"/>
 
     <Button
-        android:id="@+id/Start"
+        android:id="@+id/Dictionary"
         android:layout_width="@dimen/button_size"
         android:layout_height="@dimen/button_size"
         android:layout_margin="@dimen/button_margin"
         android:layout_centerVertical="true"/>
 
     <Button
-        android:id="@+id/Dictionary"
+        android:id="@+id/Start"
         android:layout_width="@dimen/button_size"
         android:layout_height="@dimen/button_size"
         android:layout_margin="@dimen/button_margin"

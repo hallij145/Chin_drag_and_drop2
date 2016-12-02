@@ -11,7 +11,8 @@ public class Character {
     private UUID mUUID;
     private String pinyin;
     private String english;
-    private Boolean inUserDictionary = false;
+    private Boolean isUser = false;
+    private Boolean isCombination = false;
 
     Character(){
         mUUID = UUID.randomUUID();
@@ -41,11 +42,19 @@ public class Character {
         this.english = english;
     }
 
-    public Boolean getInUserDictionary() {
-        return inUserDictionary;
+    public Boolean isUser() {
+        return isUser;
     }
 
-    public void setInUserDictionary(Boolean inUserDictionary) {
-        this.inUserDictionary = inUserDictionary;
+    public void setIsUser(Boolean isuser) {
+        this.isUser = isuser;
+    }
+
+    public Boolean isCombination() {
+        return isCombination;
+    }
+
+    public void setIsCombination(Boolean iscomb){
+        this.isCombination = iscomb;
     }
 }

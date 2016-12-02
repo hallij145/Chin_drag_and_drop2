@@ -19,7 +19,6 @@ public class StartActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-
         FragmentManager fm = getSupportFragmentManager();
         Fragment list_fragment = fm.findFragmentById(R.id.rad_list_container);
         Fragment combination_list_fragment = fm.findFragmentById(R.id.combination_list_container);

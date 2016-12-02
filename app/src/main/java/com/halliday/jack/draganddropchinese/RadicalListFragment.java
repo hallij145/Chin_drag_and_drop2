@@ -39,7 +39,6 @@ public class RadicalListFragment extends Fragment {
         return view;
     }
 
-
     private void updateUI() {
         RadicalLab radicalLab = RadicalLab.get(getActivity());
         List<Radical> radicals = radicalLab.getRadicals();

@@ -34,7 +34,7 @@ public class CharacterListFragment extends Fragment {
 
     private void updateUI() {
         CharacterLab characterLab = CharacterLab.get(getActivity());
-        List<Character> characters = characterLab.getCharacters();
+        List<Character> characters = characterLab.getCombinationCharacters();
 
         mAdapter = new CharacterAdapter(characters);
         mCharRecyclerView.setAdapter(mAdapter);

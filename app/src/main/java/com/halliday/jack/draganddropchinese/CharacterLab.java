@@ -13,6 +13,8 @@ import java.util.UUID;
 public class CharacterLab {
     private static CharacterLab sCharacterLab;
     private List<Character> mCharacters;
+    private List<Character> mUserCharacters;
+    private List<Character> mCombination;
 
     public static CharacterLab get(Context context) {
         if (sCharacterLab == null) {
@@ -28,11 +30,32 @@ public class CharacterLab {
             character.setPinyin("C_Pinyin" + i);
             mCharacters.add(character);
         }
+        mUserCharacters = new ArrayList<>();
+        for (Character character : mCharacters){
+            if (character.isUser()){
+                mUserCharacters.add(character);
+            }
+        }
+        mCombination = new ArrayList<>();
+        for (Character character : mCharacters){
+            if (character.isCombination()){
+                mCombination.add(character);
+            }
+        }
     }
 
     public List<Character> getCharacters() {
         return mCharacters;
     }
+
+    public List<Character> getUserCharacters(){
+        return mUserCharacters;
+    }
+
+    public List<Character> getCombinationCharacters(){
+        return mCombination;
+    }
+
     public Character getCharacter(UUID id) {
         for (Character character : mCharacters) {
             if (character.getUUID().equals(id)) {
@@ -41,4 +64,5 @@ public class CharacterLab {
         }
         return null;
     }
+
 }
