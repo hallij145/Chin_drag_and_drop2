@@ -2,5 +2,7 @@
     <string name="app_name">Drag-and-Drop Chinese</string>
     <string name="chinesename">拖放汉字</string>
     <string name="dictionary">Dictionary!</string>
+    <string name="userDef">Saved</string>
+    <string name="appDef">All</string>
 
 </resources>

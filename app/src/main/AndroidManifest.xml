@@ -20,6 +20,9 @@
         <activity android:name=".DictionaryActivity"
                   android:parentActivityName=".MainMenuActivity">
         </activity>
+        <activity android:name=".TabsFragmentActivity"
+                  >
+        </activity>
     </application>
 
 </manifest>
