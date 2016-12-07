@@ -17,11 +17,8 @@
         <activity android:name=".StartActivity"
                   android:parentActivityName=".MainMenuActivity">
         </activity>
-        <activity android:name=".DictionaryActivity"
-                  android:parentActivityName=".MainMenuActivity">
-        </activity>
         <activity android:name=".TabsFragmentActivity"
-                  >
+                  android:parentActivityName=".MainMenuActivity">
         </activity>
     </application>
 
