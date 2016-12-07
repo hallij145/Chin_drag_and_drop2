@@ -5,12 +5,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 
 /**
  * Created by CharlieC on November/18/16.
  */
 
-public class StartActivity extends FragmentActivity {
+public class StartActivity extends AppCompatActivity {
     private RadicalListFragment mRadicalListFragment;
     private CharacterListFragment mCharacterListFragment;
 

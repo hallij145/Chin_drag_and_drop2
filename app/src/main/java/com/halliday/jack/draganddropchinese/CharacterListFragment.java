@@ -50,7 +50,8 @@ public class CharacterListFragment extends Fragment {
 
         public void bindCharacter(Character character) {
             mCharacter = character;
-            mTitleTextView.setText(mCharacter.getPinyin());
+            mTitleTextView.setTextSize(25);
+            mTitleTextView.setText(mCharacter.getCharac());
         }
     }
 

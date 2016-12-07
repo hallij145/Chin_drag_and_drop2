@@ -8,20 +8,28 @@ import java.util.UUID;
 
 public class Radical {
 
-    private UUID mUUID;
+    private int mUUID;
     private String pinyin;
     private String english;
+    private String charac;
 
     public Radical(){
-        mUUID = UUID.randomUUID();
     }
 
-    public UUID getUUID() {
+    public int getUUID() {
         return mUUID;
     }
 
-    public void setUUID(UUID UUID) {
+    public void setUUID(int UUID) {
         mUUID = UUID;
+    }
+
+    public String getCharacter() {
+        return charac;
+    }
+
+    public void setCharacter(String charac) {
+        this.charac = charac;
     }
 
     public String getPinyin() {

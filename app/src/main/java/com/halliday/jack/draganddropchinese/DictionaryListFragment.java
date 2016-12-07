@@ -55,7 +55,8 @@ public class DictionaryListFragment extends Fragment {
 
         public void bindDictionary(Character Dictionary) {
             mDictionary = Dictionary;
-            mTitleTextView.setText(mDictionary.getPinyin());
+            mTitleTextView.setTextSize(50);
+            mTitleTextView.setText(mDictionary.getCharac());
         }
     }
 

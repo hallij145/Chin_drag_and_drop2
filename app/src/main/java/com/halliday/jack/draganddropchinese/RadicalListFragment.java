@@ -58,7 +58,7 @@ public class RadicalListFragment extends Fragment {
         public void bindRadical(Radical radical) {
             mRadical = radical;
             mTitleTextView.setTextSize(40);
-            mTitleTextView.setText(mRadical.getPinyin());
+            mTitleTextView.setText(mRadical.getCharacter());
         }
     }
 

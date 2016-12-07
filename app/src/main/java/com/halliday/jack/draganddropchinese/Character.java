@@ -8,22 +8,52 @@ import java.util.UUID;
 
 public class Character {
 
-    private UUID mUUID;
+    private int mUUID;
     private String pinyin;
     private String english;
-    private Boolean isUser = false;
-    private Boolean isCombination = false;
+    private int isUser;
+    private int isCombination;
+    private int rad1;
+    private int rad2;
+    private String charac;
 
-    Character(){
-        mUUID = UUID.randomUUID();
+    public Character(){
     }
 
-    public UUID getUUID() {
+    public Character(int uuid){
+        mUUID = uuid;
+    }
+
+    public int getUUID() {
         return mUUID;
     }
 
-    public void setUUID(UUID UUID) {
+    public void setUUID(int UUID) {
         mUUID = UUID;
+    }
+
+    public String getCharac() {
+        return charac;
+    }
+
+    public void setCharac(String charac) {
+        this.charac = charac;
+    }
+
+    public int getRad1() {
+        return rad1;
+    }
+
+    public void setRad1(int rad1) {
+        this.rad1 = rad1;
+    }
+
+    public int getRad2() {
+        return rad2;
+    }
+
+    public void setRad2(int rad2) {
+        this.rad2 = rad2;
     }
 
     public String getPinyin() {
@@ -42,19 +72,20 @@ public class Character {
         this.english = english;
     }
 
-    public Boolean isUser() {
+    public int isUser() {
         return isUser;
     }
 
-    public void setIsUser(Boolean isuser) {
+    public void setUser(int isuser) {
         this.isUser = isuser;
     }
 
-    public Boolean isCombination() {
+    public int isCombination() {
         return isCombination;
     }
 
-    public void setIsCombination(Boolean iscomb){
+    public void setCombination(int iscomb){
         this.isCombination = iscomb;
     }
 }
+

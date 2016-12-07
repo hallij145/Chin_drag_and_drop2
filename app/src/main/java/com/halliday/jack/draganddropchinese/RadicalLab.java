@@ -1,7 +1,12 @@
 package com.halliday.jack.draganddropchinese;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.util.Log;
+
+import com.halliday.jack.draganddropchinese.database.CharRadCursorWrapper;
+import com.halliday.jack.draganddropchinese.database.CharRadDbSchema;
+import com.halliday.jack.draganddropchinese.database.DatabaseAccess;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +18,9 @@ import java.util.UUID;
 
 public class RadicalLab {
     private static RadicalLab sRadicalLab;
-    private List<Radical> mRadicals;
+    private Context mContext;
+    DatabaseAccess mDatabaseAccess;
+
 
     public static RadicalLab get(Context context) {
         if (sRadicalLab == null) {
@@ -23,23 +30,49 @@ public class RadicalLab {
     }
 
     private RadicalLab(Context context) {
-        mRadicals = new ArrayList<>();
-        for (int i = 0; i < 50; i++) {
-            Radical radical = new Radical();
-            radical.setPinyin("R" + i);
-            mRadicals.add(radical);
-        }
+        mContext = context.getApplicationContext();
+        mDatabaseAccess = DatabaseAccess.getInstance(mContext);
+    }
+
+    private static ContentValues getContentValues(Radical radical) {
+        ContentValues values = new ContentValues();
+        values.put(CharRadDbSchema.RadTable.Cols.UUID, radical.getUUID());
+        values.put(CharRadDbSchema.RadTable.Cols.PINYIN, radical.getPinyin());
+        values.put(CharRadDbSchema.RadTable.Cols.ENGLISH, radical.getEnglish());
+        values.put(CharRadDbSchema.RadTable.Cols.CHARAC, radical.getCharacter());
+        return values;
     }
 
     public List<Radical> getRadicals() {
-        return mRadicals;
-    }
-    public Radical getRadical(UUID id) {
-        for (Radical radical : mRadicals) {
-            if (radical.getUUID().equals(id)) {
-                return radical;
+        List<Radical> radicals = new ArrayList<>();
+        CharRadCursorWrapper cursor = mDatabaseAccess.queryRadicals(null, null);
+        try {
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                radicals.add(cursor.getRadical());
+                cursor.moveToNext();
             }
+        } finally {
+            cursor.close();
         }
-        return null;
+        mDatabaseAccess.close();
+        return radicals;
     }
+
+    public Radical getRadical(int id) {
+        CharRadCursorWrapper cursor = mDatabaseAccess.queryRadicals(
+                CharRadDbSchema.RadTable.Cols.UUID + " = ?", new String[] { Integer.toString(id) }
+        );
+        try {
+            if (cursor.getCount() == 0) {
+                return null;
+            }
+            cursor.moveToFirst();
+            return cursor.getRadical();
+        } finally {
+            cursor.close();
+            mDatabaseAccess.close();
+        }
+    }
+
 }

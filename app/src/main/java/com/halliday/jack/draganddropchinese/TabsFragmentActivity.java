@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TabHost;
 
@@ -14,7 +15,7 @@ import java.util.HashMap;
  * Created by wolfk_000 on 12/5/2016.
  */
 
-public class TabsFragmentActivity extends FragmentActivity implements TabHost.OnTabChangeListener{
+public class TabsFragmentActivity extends AppCompatActivity implements TabHost.OnTabChangeListener{
 
     private TabHost mTabHost;
     private HashMap mapTabInfo = new HashMap();
@@ -78,17 +79,18 @@ public class TabsFragmentActivity extends FragmentActivity implements TabHost.On
     /**
      * Step 2: Setup TabHost
      */
+
     private void initialiseTabHost(Bundle args) {
         mTabHost = (TabHost)findViewById(android.R.id.tabhost);
         mTabHost.setup();
         TabInfo tabInfo = null;
-        TabsFragmentActivity.addTab(this, this.mTabHost, this.mTabHost.newTabSpec("Tab1").setIndicator("Saved"), ( tabInfo = new TabInfo("Tab1", UserListFragment.class, args)));
+        TabsFragmentActivity.addTab(this, this.mTabHost, this.mTabHost.newTabSpec("Tab1").setIndicator("All"), ( tabInfo = new TabInfo("Tab1", DictionaryListFragment.class, args)));
         this.mapTabInfo.put(tabInfo.mTag, tabInfo);
-        TabsFragmentActivity.addTab(this, this.mTabHost, this.mTabHost.newTabSpec("Tab2").setIndicator("All"), ( tabInfo = new TabInfo("Tab2", DictionaryListFragment.class, args)));
+        TabsFragmentActivity.addTab(this, this.mTabHost, this.mTabHost.newTabSpec("Tab2").setIndicator("Saved"), ( tabInfo = new TabInfo("Tab2", UserListFragment.class, args)));
         this.mapTabInfo.put(tabInfo.mTag, tabInfo);
-        // Default to first tab
+
         this.onTabChanged("All"); //default to dict tab
-        //
+
         mTabHost.setOnTabChangedListener(this);
     }
 
@@ -122,8 +124,8 @@ public class TabsFragmentActivity extends FragmentActivity implements TabHost.On
      * @see android.widget.TabHost.OnTabChangeListener#onTabChanged(java.lang.String)
      */
     public void onTabChanged(String tag) {
-        TabInfo newTab = (TabInfo) this.mapTabInfo.get(tag);
 
+        TabInfo newTab = (TabInfo) this.mapTabInfo.get(tag);
         if (mLastTab != newTab) { //if you clicked the other tab
             FragmentTransaction ft = this.getSupportFragmentManager().beginTransaction();
             if (mLastTab != null) { // if the current tab exists (safe)
