@@ -60,6 +60,14 @@ public class StartActivity extends AppCompatActivity implements RadicalListFragm
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        CharacterLab characterLab = CharacterLab.get(this);
+        characterLab.clearCombinationList();
+    }
+
+
+    @Override
     public void onRadicalSelected(int radical) {
         CharacterLab characterLab = CharacterLab.get(this);
 

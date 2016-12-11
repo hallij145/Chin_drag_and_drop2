@@ -84,9 +84,7 @@ public class CharacterListFragment extends Fragment {
                 @Override
                 public void onClick(DialogInterface alertDialog, int which) {
                     CharacterLab characterLab = CharacterLab.get(getContext());
-                    Log.i("CHARACTERLISTFRAGMENT1",Boolean.toString(mCharacter.isUser()));
                     characterLab.setCharacterUserTrue(mCharacter);
-                    Log.i("CHARACTERLISTFRAGMENT2",Boolean.toString(mCharacter.isUser()));
                 }});
             alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                 @Override

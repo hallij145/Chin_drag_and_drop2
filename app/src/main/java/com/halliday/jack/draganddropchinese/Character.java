@@ -1,5 +1,9 @@
 package com.halliday.jack.draganddropchinese;
 
+import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -8,6 +12,7 @@ import java.util.UUID;
 
 public class Character {
 
+    private List<Object> mChildrenList;
     private int mUUID;
     private String pinyin;
     private String english;

@@ -49,20 +49,27 @@ public class UserListFragment extends Fragment {
         public TextView mTitleTextView;
         public TextView mEnglishTextView;
         public TextView mPinYinTextView;
+        public TextView mRad1TextView;
+        public TextView mRad2TextView;
 
         public UserHolder(View itemView) {
             super(itemView);
             mTitleTextView = (TextView) itemView.findViewById(R.id.user_item_list_title_text_view);
             mEnglishTextView = (TextView) itemView.findViewById(R.id.u_english_text_view);
             mPinYinTextView = (TextView) itemView.findViewById(R.id.u_pinyin_text_view);
+            mRad1TextView = (TextView) itemView.findViewById(R.id.u_rad1_text_view);
+            mRad2TextView = (TextView) itemView.findViewById(R.id.u_rad2_text_view);
         }
 
         public void bindDictionary(Character character) {
+            RadicalLab radicalLab= RadicalLab.get(getContext());
             mDictionary = character;
             mTitleTextView.setTextSize(35);
             mTitleTextView.setText(mDictionary.getCharac());
             mEnglishTextView.setText(mDictionary.getEnglish());
             mPinYinTextView.setText(mDictionary.getPinyin());
+            mRad1TextView.setText(radicalLab.getRadical(mDictionary.getRad1()).getCharacter());
+            mRad2TextView.setText(radicalLab.getRadical(mDictionary.getRad2()).getCharacter());
         }
     }
 

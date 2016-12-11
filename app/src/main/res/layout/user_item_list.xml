@@ -29,4 +29,21 @@
         android:textSize="30sp"
         android:padding="5dp"
         android:textAlignment="center"/>
+    <TextView
+        android:id="@+id/u_rad1_text_view"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:padding="5dp"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/u_rad2_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="30sp"
+        android:padding="5dp"
+        android:textAlignment="center"/>
 </LinearLayout>

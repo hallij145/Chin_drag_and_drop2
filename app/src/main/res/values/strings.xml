@@ -9,4 +9,6 @@
     <string name="pinyin">Pinyin</string>
     <string name="radlist">Radical List</string>
     <string name="charcomb">Character Combinations</string>
+    <string name="rad1">Rad 1</string>
+    <string name="rad2">Rad 2</string>
 </resources>
