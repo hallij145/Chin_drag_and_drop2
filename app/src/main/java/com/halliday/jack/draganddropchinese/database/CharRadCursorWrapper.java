@@ -23,8 +23,7 @@ public class CharRadCursorWrapper extends CursorWrapper {
         String charac = getString(getColumnIndex(CharRadDbSchema.CharTable.Cols.CHARAC));
         int rad1 = getInt(getColumnIndex(CharRadDbSchema.CharTable.Cols.RADICAL1));
         int rad2 = getInt(getColumnIndex(CharRadDbSchema.CharTable.Cols.RADICAL2));
-        int isUser = getInt(getColumnIndex(CharRadDbSchema.CharTable.Cols.ISUSER));
-        int isComb = getInt(getColumnIndex(CharRadDbSchema.CharTable.Cols.ISCOMB));
+        int isuser = getInt(getColumnIndex(CharRadDbSchema.CharTable.Cols.ISUSER));
 
         Character character = new Character();
         character.setUUID(uuid);
@@ -33,8 +32,12 @@ public class CharRadCursorWrapper extends CursorWrapper {
         character.setRad1(rad1);
         character.setRad2(rad2);
         character.setCharac(charac);
-        character.setUser(isUser);
-        character.setCombination(isComb);
+        if (isuser == 1){
+            character.setUser(true);
+        }
+        else{
+            character.setUser(false);
+        }
 
         return character;
     }

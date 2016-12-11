@@ -11,8 +11,7 @@ public class Character {
     private int mUUID;
     private String pinyin;
     private String english;
-    private int isUser;
-    private int isCombination;
+    private boolean isUser;
     private int rad1;
     private int rad2;
     private String charac;
@@ -72,20 +71,13 @@ public class Character {
         this.english = english;
     }
 
-    public int isUser() {
+    public boolean isUser() {
         return isUser;
     }
 
-    public void setUser(int isuser) {
+    public void setUser(boolean isuser) {
         this.isUser = isuser;
     }
 
-    public int isCombination() {
-        return isCombination;
-    }
-
-    public void setCombination(int iscomb){
-        this.isCombination = iscomb;
-    }
 }
 

@@ -40,7 +40,6 @@ public class UserListFragment extends Fragment {
     private void updateUI() {
         CharacterLab characterLab = CharacterLab.get(getActivity());
         List<Character> characters = characterLab.getUserCharacters();
-
         mAdapter = new UserAdapter(characters);
         mUserRecyclerView.setAdapter(mAdapter);
     }

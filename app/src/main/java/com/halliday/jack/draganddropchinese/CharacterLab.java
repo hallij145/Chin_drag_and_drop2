@@ -21,6 +21,9 @@ public class CharacterLab {
     private static CharacterLab sCharacterLab;
     private Context mContext;
     DatabaseAccess mDatabaseAccess;
+    private List<Character> mRadCombinations = new ArrayList<>();
+    private List<Character> mSecondRadCombinations = new ArrayList<>();
+    private List<Character> mUserCharacters = new ArrayList<>();
 
 
     public static CharacterLab get(Context context) {
@@ -34,27 +37,6 @@ public class CharacterLab {
         mContext = context.getApplicationContext();
         mDatabaseAccess = DatabaseAccess.getInstance(mContext);
     }
-
-    private static ContentValues getContentValues(Character character) {
-        ContentValues values = new ContentValues();
-        values.put(CharRadDbSchema.CharTable.Cols.UUID, character.getUUID());
-        values.put(CharRadDbSchema.CharTable.Cols.PINYIN, character.getPinyin());
-        values.put(CharRadDbSchema.CharTable.Cols.ENGLISH, character.getEnglish());
-        values.put(CharRadDbSchema.CharTable.Cols.RADICAL1, character.getRad1());
-        values.put(CharRadDbSchema.CharTable.Cols.RADICAL2, character.getRad2());
-        values.put(CharRadDbSchema.CharTable.Cols.ISUSER, character.isUser());
-        values.put(CharRadDbSchema.CharTable.Cols.ISCOMB, character.isCombination());
-        values.put(CharRadDbSchema.CharTable.Cols.CHARAC, character.isUser());
-        return values;
-    }
-
-    /*public void updateChar(Character character) {
-        String uuidString = character.getUUID().toString();
-        ContentValues values = getContentValues(character);
-        mDatabase.update(CharRadDbSchema.CharTable.NAME, values,
-                CharRadDbSchema.CharTable.Cols.UUID + " = ?",
-                new String[] { uuidString });
-    }*/
 
     public List<Character> getCharacters() {
         List<Character> characters = new ArrayList<>();
@@ -73,41 +55,64 @@ public class CharacterLab {
     }
 
     public List<Character> getUserCharacters(){
-        int isUser = 1;
-        List<Character> characters = new ArrayList<>();
+        /*int isUser = 1;
         CharRadCursorWrapper cursor = mDatabaseAccess.queryCharacters(
-                CharRadDbSchema.CharTable.Cols.ISCOMB + " = ?", new String[] { Integer.toString(isUser) }
-        );
+                CharRadDbSchema.CharTable.Cols.ISUSER + " = ?", new String[] { Integer.toString(isUser) });
         try {
             cursor.moveToFirst();
             while (!cursor.isAfterLast()) {
-                characters.add(cursor.getCharacter());
+                mUserCharacters.add(cursor.getCharacter());
                 cursor.moveToNext();
             }
         } finally {
             cursor.close();
-        }
-        mDatabaseAccess.close();
-        return characters;
+        }*/
+        return mUserCharacters;
     }
 
-    public List<Character> getCombinationCharacters(){
-        int isComb = 1;
-        List<Character> characters = new ArrayList<>();
+    public void getCharactersFromRadicalID(int id){
         CharRadCursorWrapper cursor = mDatabaseAccess.queryCharacters(
-                CharRadDbSchema.CharTable.Cols.ISCOMB + " = ?", new String[] { Integer.toString(isComb) }
-        );
+                CharRadDbSchema.CharTable.Cols.RADICAL1 + " = ?", new String[] { Integer.toString(id) });
         try {
             cursor.moveToFirst();
             while (!cursor.isAfterLast()) {
-                characters.add(cursor.getCharacter());
+                mRadCombinations.add(cursor.getCharacter());
                 cursor.moveToNext();
             }
         } finally {
             cursor.close();
         }
+        cursor = mDatabaseAccess.queryCharacters(
+                CharRadDbSchema.CharTable.Cols.RADICAL2 + " = ?", new String[] { Integer.toString(id) });
+        try {
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                mRadCombinations.add(cursor.getCharacter());
+                cursor.moveToNext();
+            }
+        } finally {
+            cursor.close();
+        }
+
         mDatabaseAccess.close();
-        return characters;
+    }
+
+    public void getCombinationsFromSecondRadical(int id){
+        for (Character character: mRadCombinations) {
+            if (character.getRad1() == id || character.getRad2() == id){
+                mSecondRadCombinations.add(character);
+            }
+        }
+
+    }
+
+    public List<Character> getCombCharacters(){
+        return mSecondRadCombinations;
+    }
+
+    public void clearCombinationList(){
+        mRadCombinations.clear();
+        mSecondRadCombinations.clear();
     }
 
     public Character getCharacter(UUID id) {
@@ -124,6 +129,12 @@ public class CharacterLab {
             cursor.close();
             mDatabaseAccess.close();
         }
+    }
+
+    public void setCharacterUserTrue(Character character){
+        character.setUser(true);
+        mDatabaseAccess.updateCharacterInfo(character);
+        mUserCharacters.add(character);
     }
 
 }

@@ -34,15 +34,6 @@ public class RadicalLab {
         mDatabaseAccess = DatabaseAccess.getInstance(mContext);
     }
 
-    private static ContentValues getContentValues(Radical radical) {
-        ContentValues values = new ContentValues();
-        values.put(CharRadDbSchema.RadTable.Cols.UUID, radical.getUUID());
-        values.put(CharRadDbSchema.RadTable.Cols.PINYIN, radical.getPinyin());
-        values.put(CharRadDbSchema.RadTable.Cols.ENGLISH, radical.getEnglish());
-        values.put(CharRadDbSchema.RadTable.Cols.CHARAC, radical.getCharacter());
-        return values;
-    }
-
     public List<Radical> getRadicals() {
         List<Radical> radicals = new ArrayList<>();
         CharRadCursorWrapper cursor = mDatabaseAccess.queryRadicals(null, null);

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TabHost;
@@ -84,8 +85,12 @@ public class TabsFragmentActivity extends AppCompatActivity implements TabHost.O
         mTabHost = (TabHost)findViewById(android.R.id.tabhost);
         mTabHost.setup();
         TabInfo tabInfo = null;
+
+        //Tab 1
         TabsFragmentActivity.addTab(this, this.mTabHost, this.mTabHost.newTabSpec("Tab1").setIndicator("All"), ( tabInfo = new TabInfo("Tab1", DictionaryListFragment.class, args)));
         this.mapTabInfo.put(tabInfo.mTag, tabInfo);
+
+        //Tab 2
         TabsFragmentActivity.addTab(this, this.mTabHost, this.mTabHost.newTabSpec("Tab2").setIndicator("Saved"), ( tabInfo = new TabInfo("Tab2", UserListFragment.class, args)));
         this.mapTabInfo.put(tabInfo.mTag, tabInfo);
 

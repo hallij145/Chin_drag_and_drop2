@@ -1,11 +1,14 @@
 package com.halliday.jack.draganddropchinese;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.ListFragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
@@ -20,10 +23,27 @@ import java.util.List;
 public class RadicalListFragment extends Fragment {
     private RecyclerView mRadicalRecyclerView;
     private RadicalAdapter mAdapter;
+    private Callbacks mCallbacks;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    public interface Callbacks{
+        void onRadicalSelected(int radical);
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        mCallbacks = (Callbacks) activity;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mCallbacks = null;
     }
 
     @Override
@@ -39,6 +59,7 @@ public class RadicalListFragment extends Fragment {
         return view;
     }
 
+
     private void updateUI() {
         RadicalLab radicalLab = RadicalLab.get(getActivity());
         List<Radical> radicals = radicalLab.getRadicals();
@@ -47,12 +68,14 @@ public class RadicalListFragment extends Fragment {
         mRadicalRecyclerView.setAdapter(mAdapter);
     }
 
-    private class RadicalHolder extends RecyclerView.ViewHolder {
+    private class RadicalHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public Radical mRadical;
         public TextView mTitleTextView;
         public RadicalHolder(View itemView) {
             super(itemView);
             mTitleTextView = (TextView) itemView.findViewById(R.id.rad_item_list_title_text_view);
+
+            itemView.setOnClickListener(this);
         }
 
         public void bindRadical(Radical radical) {
@@ -60,6 +83,13 @@ public class RadicalListFragment extends Fragment {
             mTitleTextView.setTextSize(40);
             mTitleTextView.setText(mRadical.getCharacter());
         }
+
+        @Override
+        public void onClick(View v) {
+            mCallbacks.onRadicalSelected(mRadical.getUUID());
+        }
+
+
     }
 
     private class RadicalAdapter extends RecyclerView.Adapter<RadicalHolder> {

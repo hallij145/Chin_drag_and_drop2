@@ -4,5 +4,7 @@
     <string name="dictionary">Dictionary!</string>
     <string name="userDef">Saved</string>
     <string name="appDef">All</string>
-
+    <string name="character">Character</string>
+    <string name="english">English</string>
+    <string name="pinyin">Pinyin</string>
 </resources>

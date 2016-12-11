@@ -14,7 +14,6 @@ public class CharRadDbSchema {
             public static final String CHARAC = "charac";
             public static final String ENGLISH = "english";
             public static final String ISUSER = "isuser";
-            public static final String ISCOMB = "iscomb";
             public static final String RADICAL1 = "rad1";
             public static final String RADICAL2 = "rad2";
         }
