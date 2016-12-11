@@ -7,4 +7,6 @@
     <string name="character">Character</string>
     <string name="english">English</string>
     <string name="pinyin">Pinyin</string>
+    <string name="radlist">Radical List</string>
+    <string name="charcomb">Character Combinations</string>
 </resources>

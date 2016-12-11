@@ -1,15 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/user_item_list_title_text_view"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:padding="4dp"
-        tools:text="Userlist"/>
+        android:textSize="30sp"
+        android:padding="5dp"
+        android:textAlignment="center"/>
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/u_english_text_view"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:padding="5dp"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/u_pinyin_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="30sp"
+        android:padding="5dp"
+        android:textAlignment="center"/>
+</LinearLayout>

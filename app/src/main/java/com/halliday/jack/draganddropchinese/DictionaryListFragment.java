@@ -48,15 +48,22 @@ public class DictionaryListFragment extends Fragment {
     private class DictionaryHolder extends RecyclerView.ViewHolder {
         public Character mDictionary;
         public TextView mTitleTextView;
+        public TextView mEnglishTextView;
+        public TextView mPinYinTextView;
+
         public DictionaryHolder(View itemView) {
             super(itemView);
             mTitleTextView = (TextView) itemView.findViewById(R.id.dict_item_list_title_text_view);
+            mEnglishTextView = (TextView) itemView.findViewById(R.id.d_english_text_view);
+            mPinYinTextView = (TextView) itemView.findViewById(R.id.d_pinyin_text_view);
         }
 
         public void bindDictionary(Character Dictionary) {
             mDictionary = Dictionary;
-            mTitleTextView.setTextSize(50);
+            mTitleTextView.setTextSize(35);
             mTitleTextView.setText(mDictionary.getCharac());
+            mEnglishTextView.setText(mDictionary.getEnglish());
+            mPinYinTextView.setText(mDictionary.getPinyin());
         }
     }
 
