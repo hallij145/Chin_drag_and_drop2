@@ -4,4 +4,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="button_size">100dp</dimen>
     <dimen name="button_margin">50dp</dimen>
+    <dimen name="start_offset">16dp</dimen>
+    <dimen name="end_offset">16dp</dimen>
+    <dimen name="divider_size">8dp</dimen>
 </resources>

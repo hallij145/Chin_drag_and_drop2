@@ -32,6 +32,9 @@ public class TabsFragmentActivity extends AppCompatActivity implements TabHost.O
             this.mClass = cls;
             this.mArgs = args;
         }
+        public Fragment getFragment(){
+              return fragment;
+        }
     }
 
     class TabFactory implements TabHost.TabContentFactory {
@@ -68,7 +71,6 @@ public class TabsFragmentActivity extends AppCompatActivity implements TabHost.O
             mTabHost.setCurrentTabByTag(savedInstanceState.getString("tab")); //set the tab as per the saved state
         }
     }
-
     /** (non-Javadoc)
      * @see android.support.v4.app.FragmentActivity#onSaveInstanceState(android.os.Bundle)
      */
@@ -95,7 +97,6 @@ public class TabsFragmentActivity extends AppCompatActivity implements TabHost.O
         this.mapTabInfo.put(tabInfo.mTag, tabInfo);
 
         this.onTabChanged("All"); //default to dict tab
-
         mTabHost.setOnTabChangedListener(this);
     }
 

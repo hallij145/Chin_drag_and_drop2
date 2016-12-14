@@ -2,6 +2,7 @@ package com.halliday.jack.draganddropchinese.database;
 
 import android.database.Cursor;
 import android.database.CursorWrapper;
+import android.util.Log;
 
 import com.halliday.jack.draganddropchinese.Character;
 import com.halliday.jack.draganddropchinese.Radical;
@@ -15,6 +16,7 @@ public class CharRadCursorWrapper extends CursorWrapper {
     public CharRadCursorWrapper(Cursor cursor) {
         super(cursor);
     }
+    public final int [] usable = {9,11,12,21,30,32,38,39,40,42,64,66,70,75,78,86,87,102,118,130,187};
 
     public Character getCharacter() {
         int uuid = getInt(getColumnIndex(CharRadDbSchema.CharTable.Cols.UUID));
@@ -53,6 +55,14 @@ public class CharRadCursorWrapper extends CursorWrapper {
         radical.setPinyin(pinyin);
         radical.setCharacter(charac);
         radical.setEnglish(english);
+
+        //FOR DEMO PURPOSES
+        for(int i:usable){
+            if (uuid == i){
+                radical.setCanUse(true);
+                Log.i("The UUID",uuid+" is set to true.");
+            }
+        }
 
         return radical;
     }

@@ -40,11 +40,12 @@ public class RadicalLab {
         try {
             cursor.moveToFirst();
             while (!cursor.isAfterLast()) {
-                radicals.add(cursor.getRadical());
+                radicals.add(cursor.getRadical()); //
                 cursor.moveToNext();
             }
         } finally {
             cursor.close();
+            Log.i("cursor is at"+cursor.getPosition(),".");
         }
         mDatabaseAccess.close();
         return radicals;

@@ -17,6 +17,7 @@ import java.util.List;
 
 public class UserListFragment extends Fragment {
     private RecyclerView mUserRecyclerView;
+
     private UserAdapter mAdapter;
 
     @Override
@@ -37,7 +38,7 @@ public class UserListFragment extends Fragment {
         return view;
     }
 
-    private void updateUI() {
+    public void updateUI() {
         CharacterLab characterLab = CharacterLab.get(getActivity());
         List<Character> characters = characterLab.getUserCharacters();
         mAdapter = new UserAdapter(characters);
