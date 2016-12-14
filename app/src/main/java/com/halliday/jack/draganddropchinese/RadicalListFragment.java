@@ -1,6 +1,7 @@
 package com.halliday.jack.draganddropchinese;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -68,7 +70,7 @@ public class RadicalListFragment extends Fragment {
         mRadicalRecyclerView.setAdapter(mAdapter);
     }
 
-    private class RadicalHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    private class RadicalHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         public Radical mRadical;
         public TextView mTitleTextView;
         public RadicalHolder(View itemView) {
@@ -76,6 +78,7 @@ public class RadicalListFragment extends Fragment {
             mTitleTextView = (TextView) itemView.findViewById(R.id.rad_item_list_title_text_view);
 
             itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
         }
 
         public void bindRadical(Radical radical) {
@@ -87,6 +90,16 @@ public class RadicalListFragment extends Fragment {
         @Override
         public void onClick(View v) {
             mCallbacks.onRadicalSelected(mRadical.getUUID());
+        }
+
+        @Override
+        public boolean onLongClick(View v) {
+            Context context = getContext();
+            CharSequence text = "("+this.mRadical.getPinyin()+") "+this.mRadical.getEnglish();
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context,text,duration);
+            toast.show();
+            return true;
         }
 
 

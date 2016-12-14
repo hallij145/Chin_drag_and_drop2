@@ -11,7 +11,7 @@ public class CharRadDbSchema {
         public static final class Cols{
             public static final String UUID = "_id";
             public static final String PINYIN = "pinyin";
-            public static final String CHARAC = "charac";
+            public static final String CHARAC = "charc";
             public static final String ENGLISH = "english";
             public static final String ISUSER = "isuser";
             public static final String RADICAL1 = "rad1";
