@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:padding="4dp"
-        tools:text="Crime Title"/>
+        tools:text="Radical"/>
+
 
 </RelativeLayout>

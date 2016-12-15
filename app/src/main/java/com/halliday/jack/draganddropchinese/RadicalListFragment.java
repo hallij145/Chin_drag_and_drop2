@@ -2,9 +2,13 @@ package com.halliday.jack.draganddropchinese;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -26,6 +30,7 @@ public class RadicalListFragment extends Fragment {
     private RecyclerView mRadicalRecyclerView;
     private RadicalAdapter mAdapter;
     private Callbacks mCallbacks;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -65,7 +70,6 @@ public class RadicalListFragment extends Fragment {
     private void updateUI() {
         RadicalLab radicalLab = RadicalLab.get(getActivity());
         List<Radical> radicals = radicalLab.getRadicals();
-
         mAdapter = new RadicalAdapter(radicals);
         mRadicalRecyclerView.setAdapter(mAdapter);
     }
@@ -76,7 +80,6 @@ public class RadicalListFragment extends Fragment {
         public RadicalHolder(View itemView) {
             super(itemView);
             mTitleTextView = (TextView) itemView.findViewById(R.id.rad_item_list_title_text_view);
-
             itemView.setOnClickListener(this);
             itemView.setOnLongClickListener(this);
         }
@@ -85,6 +88,9 @@ public class RadicalListFragment extends Fragment {
             mRadical = radical;
             mTitleTextView.setTextSize(40);
             mTitleTextView.setText(mRadical.getCharacter());
+            if (radical.isCanUse()){
+                mTitleTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.green));
+            }
         }
 
         @Override
@@ -132,5 +138,4 @@ public class RadicalListFragment extends Fragment {
             mRadicals = radicals;
         }
     }
-
 }

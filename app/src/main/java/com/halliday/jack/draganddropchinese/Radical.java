@@ -13,7 +13,12 @@ public class Radical {
     private String english;
     private String charac;
 
+
+
+    private boolean canUse;
+
     public Radical(){
+        canUse = false;
     }
 
     public int getUUID() {
@@ -46,6 +51,14 @@ public class Radical {
 
     public void setEnglish(String english) {
         this.english = english;
+    }
+
+    public boolean isCanUse() {
+        return canUse;
+    }
+
+    public void setCanUse(boolean cu) {
+        this.canUse = cu;
     }
 
 }
