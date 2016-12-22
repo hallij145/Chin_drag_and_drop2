@@ -45,7 +45,7 @@ public class RadicalLab {
             }
         } finally {
             cursor.close();
-            Log.i("cursor is at"+cursor.getPosition(),".");
+            Log.i("cursor is at" + cursor.getPosition(),".");
         }
         mDatabaseAccess.close();
         return radicals;

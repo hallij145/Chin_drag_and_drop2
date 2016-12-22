@@ -12,13 +12,10 @@ public class Radical {
     private String pinyin;
     private String english;
     private String charac;
-
-
-
-    private boolean canUse;
+    private boolean canUse = false;
 
     public Radical(){
-        canUse = false;
+
     }
 
     public int getUUID() {

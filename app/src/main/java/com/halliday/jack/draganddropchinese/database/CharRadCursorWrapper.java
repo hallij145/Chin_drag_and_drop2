@@ -58,7 +58,7 @@ public class CharRadCursorWrapper extends CursorWrapper {
 
         //FOR DEMO PURPOSES
         for(int i:usable){
-            if (uuid == i){
+            if (radical.getUUID() == i){
                 radical.setCanUse(true);
                 Log.i("The UUID",uuid+" is set to true.");
             }

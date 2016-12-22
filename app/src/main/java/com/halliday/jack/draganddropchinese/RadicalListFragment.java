@@ -88,9 +88,9 @@ public class RadicalListFragment extends Fragment {
             mRadical = radical;
             mTitleTextView.setTextSize(40);
             mTitleTextView.setText(mRadical.getCharacter());
-            if (radical.isCanUse()){
+            /*if (radical.isCanUse()){
                 mTitleTextView.setTextColor(ContextCompat.getColor(getContext(), R.color.green));
-            }
+            }*/
         }
 
         @Override
